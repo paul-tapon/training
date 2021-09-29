@@ -1,0 +1,35 @@
+<input type="text" [(ngModel)]="filterQuery"/>
+
+<button class="btn btn-primary" 
+(click)="onFilterCliked()">
+    Filter</button>
+
+
+    <span>
+        {{eventData}}
+    </span>
+
+<table class="table table-bordered table-zebra">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th class="col-sm-3">Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products$ | async">
+            <td>
+                {{product.title}}
+            </td>
+            <td>
+                {{product.description}}
+            </td>
+            <td>
+                <product-star [rating]="product.rating.rate" (ratingClicked)="onRatingClicked($event)">
+
+                </product-star>
+            </td>
+        </tr>
+    </tbody>
+</table>

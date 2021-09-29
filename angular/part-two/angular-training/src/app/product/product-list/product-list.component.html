@@ -1,1 +1,53 @@
-<p>product-list works!</p>
+<h2>Products</h2>
+<div class="form-group">
+    <label for="filter">Filter:</label>
+
+    <input type="text" class="form-control" id="filter" class="col-sm-1" [(ngModel)]="filterText">
+
+    <button class="btn btn-primary" (click)="onFilterBtnClicked()">Filter</button>
+  </div>
+
+
+<div>
+    <table class="table table-bordered table-zebra">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+                <th class="col-sm-1">
+                    Rating
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products$ | async">
+                <td>
+                    {{product.title}}
+                </td>
+                <td>
+                    {{product.description}}
+                </td>
+                <td>
+                    {{product.price}}
+                </td>
+                <td>
+                    <div>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
